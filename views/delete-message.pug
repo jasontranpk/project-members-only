@@ -1,0 +1,7 @@
+extends layout
+
+block content
+    h2 Do you really want to delete message ID #{messageId}
+    form(method='POST' action='')
+        input#messageId(type='hidden' name='messageId' value=messageId)
+        button.btn.btn-primary(type='submit') Submit

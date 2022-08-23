@@ -1,0 +1,32 @@
+extends layout
+
+block content 
+    h1= title
+
+    form(method="POST" action="")
+        .form-group
+            label(for='firstName') First name: 
+            input#firstName.form-control(type='text' placeholder='First name(Christian)' name='firstName' required='true' value=(user===undefined? '': user.firstName))
+
+            label(for='lastName') Last name: 
+            input#firstName.form-control(type='text' placeholder='Last name(Surname)' name='lastName' required='true' value=(user===undefined? '': user.lastName))
+
+            label(for='username') Username: 
+            input#username.form-control(type='text' placeholder='red_potato123' name='username' required='true' value=(user===undefined? '': user.username))
+
+            label(for='password') Password: 
+            input#password.form-control(type='password' name='password' placeholder='********' required='true')
+
+            label(for='confirmedPassword') Confirm Password: 
+            input#confirmedPassword.form-control(type='password' name='confirmedPassword' placeholder='********'  required='true')
+
+            label(for='isAdmin') Is Admin: 	&nbsp;
+            input#isAdmin(type='checkbox' value='true' name='isAdmin' required='true')
+
+            input#membershipStatus.form-control(type='hidden' name='membershipStatus' value='new')
+
+        button.btn.btn-primary(type="submit") Submit
+    if errors
+        ul
+            for error in errors
+                li!= error.msg

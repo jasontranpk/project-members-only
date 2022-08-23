@@ -2,4 +2,13 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  if messages 
+    ul 
+      each message in messages 
+        if !currentUser 
+          li Title: #{message.title} - Text: #{message.text}
+        else if !currentUser.isAdmin
+          li Title: #{message.title} - Text: #{message.text} - Author: #{message.userCreated.username}          
+        else 
+          li Title: #{message.title} - Text: #{message.text} - Author: #{message.userCreated.username} 
+            a(href=`/messages/${message._id}/delete`) Delete 
